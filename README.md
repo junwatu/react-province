@@ -1,22 +1,18 @@
-#React Component - Select Province
+#React Component To Select Province
 
+it's select the province from Indonesia country but you can still change the source for this component to meet your need.
 
-##Installation
+##Build
 
-> TODO
+    $ npm run build
 
 ##Usage
 
-```
-<indonesia-province id="propinsiku"></indonesia-province>
+Look at file `index.html` for how to use this component.
 
-<script>
-	var propinsi = document.getElementById('propinsiku');
+----
 
-	propinsi.addEventListener('change', function(e){
-		var data = e.target.value.toLowerCase();
-	});
+MIT License
 
-</script>
 
-```
+2015 (c) Equan Pr.
