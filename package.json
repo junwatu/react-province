@@ -1,6 +1,6 @@
 {
-  "name": "indonesia-province-select-component",
-  "description": "ReactJS component for Indonesia Provinces",
+  "name": "react-province",
+  "description": "ReactJS component to select Indonesia province",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junwatu/indonesia-province-select-component.git"
+    "url": "git+https://github.com/junwatu/react-province.git"
   },
   "keywords": [
     "reactjs",
@@ -20,9 +20,9 @@
   "author": "Equan Pr.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/junwatu/indonesia-province-select-component/issues"
+    "url": "https://github.com/junwatu/react-province/issues"
   },
-  "homepage": "https://github.com/junwatu/indonesia-province-select-component#readme",
+  "homepage": "https://github.com/junwatu/react-province#readme",
   "dependencies": {
     "react": "^0.13.3"
   },
