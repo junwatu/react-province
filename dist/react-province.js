@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var ProvinceSelect = React.createClass({displayName: "ProvinceSelect", 
         	render: function(){ 
-	        	return React.createElement(ProvinceList, {data: this.state.provs, onSelect: this.onSelectedProv})
+	        	return React.createElement(ProvinceList, {data: this.state.provs, onSelect: this.onSelectProvHandler})
 	        },
 
 	        componentWillMount: function(){
@@ -50,16 +50,15 @@ var ProvinceSelect = React.createClass({displayName: "ProvinceSelect",
 	         	}
 	        },
 
-			onSelectedProv: function(event){
-	      		var data = event.target.value.toLowerCase();
-	      		// TODO: Do something with the data
+	        onSelectProvHandler: function(provListComponent) {
+                console.log(provListComponent.props); 
 	        }
 });
 		
 var ProvinceList = React.createClass({displayName: "ProvinceList",
     render: function(){
         return (
-	        React.createElement("select", {onChange: this.props.onSelect}, 
+	        React.createElement("select", {onChange: this.onSelectHandler, ref: "provSelect"}, 
 	                
 	            	this.props.data.map(function(prov){
                         return React.createElement("option", {key: prov.iso, "data-bps": prov.bps, id: prov.iso}, prov.name)
@@ -67,6 +66,16 @@ var ProvinceList = React.createClass({displayName: "ProvinceList",
 	            
 	        )		
 	    );
+    },
+
+    onSelectHandler: function(e){
+    	this.props.prov = {
+    		bps: e.target[e.target.selectedIndex].getAttribute('data-bps'),
+    		iso: e.target[e.target.selectedIndex].id,
+    		value: e.target.value
+    	}
+    	
+        this.props.onSelect(this);
     }
 })
 

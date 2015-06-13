@@ -1,6 +1,6 @@
 var ProvinceSelect = React.createClass({ 
         	render: function(){ 
-	        	return <ProvinceList data={this.state.provs} onSelect={this.onSelectedProv}/>
+	        	return <ProvinceList data={this.state.provs} onSelect={this.onSelectProvHandler}/>
 	        },
 
 	        componentWillMount: function(){
@@ -49,16 +49,17 @@ var ProvinceSelect = React.createClass({
 	         	}
 	        },
 
-			onSelectedProv: function(event){
-	      		var data = event.target.value.toLowerCase();
-	      		// TODO: Do something with the data
+	        onSelectProvHandler: function(provListComponent) {
+                var selectedProv = provListComponent.props;
+                // Do something with data
+                console.log(selectedProv); 
 	        }
 });
 		
 var ProvinceList = React.createClass({
     render: function(){
         return (
-	        <select  onChange={this.props.onSelect}>
+	        <select  onChange={this.onSelectHandler} ref="provSelect">
 	            {    
 	            	this.props.data.map(function(prov){
                         return <option key={prov.iso} data-bps={prov.bps} id={prov.iso}>{prov.name}</option>
@@ -66,6 +67,17 @@ var ProvinceList = React.createClass({
 	            }
 	        </select>		
 	    );
+    },
+
+    onSelectHandler: function(e){
+
+    	this.props.prov = {
+    		bps: e.target[e.target.selectedIndex].getAttribute('data-bps'),
+    		iso: e.target[e.target.selectedIndex].id,
+    		value: e.target.value
+    	}
+    	
+        this.props.onSelect(this);
     }
 })
 
